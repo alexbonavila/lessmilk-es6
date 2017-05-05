@@ -34,7 +34,7 @@ export default class extends Phaser.State {
 
     this.spawnPlayer()
 
-    if (!this.desktop)
+    if (!this.game.device.desktop)
       this.addMobileInputs()
 
   }
