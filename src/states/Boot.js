@@ -4,27 +4,32 @@ import WebFont from 'webfontloader'
 export default class extends Phaser.State {
   init () {
     this.stage.backgroundColor = '#3498db'
-    this.preload()
+    this.fontsReady = false
+    this.fontsLoaded = this.fontsLoaded.bind(this)
   }
 
   preload () {
-    this.load.spritesheet('player', 'assets/player.png', 28, 22);
-    this.load.image('wall', 'assets/wall.png');
-    this.load.image('ground', 'assets/ground.png');
-    this.load.image('dust', 'assets/dust.png');
-    this.load.image('exp', 'assets/exp.png');
-    this.load.image('enemy', 'assets/enemy.png');
-    this.load.image('coin', 'assets/coin.png');
+    WebFont.load({
+      google: {
+        families: ['Bangers']
+      },
+      active: this.fontsLoaded
+    })
 
-    if (!this.desktop) {
-      this.load.image('right', 'assets/right.png');
-      this.load.image('left', 'assets/left.png');
+    let text = this.add.text(this.world.centerX, this.world.centerY, 'loading fonts', { font: '16px Arial', fill: '#dddddd', align: 'center' })
+    text.anchor.setTo(0.5, 0.5)
+
+    this.load.image('loaderBg', './assets/images/loader-bg.png')
+    this.load.image('loaderBar', './assets/images/loader-bar.png')
+  }
+
+  render () {
+    if (this.fontsReady) {
+      this.state.start('Splash')
     }
-    this.load.image('jump', 'assets/jump.png');
+  }
 
-    this.load.audio('dead', ['assets/dead.wav', 'assets/dead.mp3']);
-    this.load.audio('dust', ['assets/dust.wav', 'assets/dust.mp3']);
-    this.load.audio('jump', ['assets/jump.wav', 'assets/jump.mp3']);
-    this.load.audio('coin', ['assets/coin.wav', 'assets/coin.mp3']);
+  fontsLoaded () {
+    this.fontsReady = true
   }
 }
