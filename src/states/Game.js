@@ -19,7 +19,7 @@ export default class extends Phaser.State {
     this.dustSound = this.add.audio('dust', 0.1)
     this.coinSound = this.add.audio('coin', 0.1)
 
-    this.player = this.add.sprite(250, 50, 'player')
+    this.player = this.add.sprite(280, 50, 'player')
     this.player.anchor.setTo(0.5, 0.5)
     this.physics.arcade.enable(this.player)
     this.player.body.gravity.y = 600
@@ -145,7 +145,7 @@ export default class extends Phaser.State {
     this.add.sprite(140, 120, 'coin', 0, this.coins)
     this.add.sprite(170, 120, 'coin', 0, this.coins)
     this.add.sprite(200, 120, 'coin', 0, this.coins)
-
+    this.add.sprite(170, 90, 'coin', 0, this.coins)
     this.coins.forEachAlive(function (e) {
       e.isTaken = false
       e.scale.setTo(0, 0)
