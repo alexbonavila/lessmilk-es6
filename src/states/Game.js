@@ -154,10 +154,10 @@ export default class extends Phaser.State {
     }, this)
   }
 
-  takeCoin (a, b) {
-    b.body.enable = false
-    this.add.tween(b.scale).to({x: 0}, 150).start()
-    this.add.tween(b).to({y: 50}, 150).start()
+  takeCoin (player, coin) {
+    coin.body.enable = false
+    this.add.tween(coin.scale).to({x: 0}, 150).start()
+    this.add.tween(coin).to({y: 50}, 150).start()
     this.coinSound.play()
   }
 
