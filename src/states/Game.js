@@ -1,6 +1,5 @@
-/* globals __DEV__ */
 import Phaser from 'phaser'
-import Mushroom from '../sprites/Mushroom'
+// import Mushroom from '../sprites/Mushroom'
 
 export default class extends Phaser.State {
   init () {}
@@ -34,9 +33,9 @@ export default class extends Phaser.State {
 
     this.spawnPlayer()
 
-    if (!this.game.device.desktop)
+    if (!this.game.device.desktop) {
       this.addMobileInputs()
-
+    }
   }
 
   update () {
@@ -62,20 +61,15 @@ export default class extends Phaser.State {
       this.player.body.velocity.x = -200
       this.player.frame = 2
       this.sound.mute = false
-    }
-    else if (this.cursor.right.isDown || this.moveRight) {
+    } else if (this.cursor.right.isDown || this.moveRight) {
       this.player.body.velocity.x = 200
       this.player.frame = 1
       this.sound.mute = false
-    }
-    else {
+    } else {
       this.player.body.velocity.x = 0
-    }
-
-    if (this.player.body.velocity.x == 0)
+    } if (this.player.body.velocity.x === 0) {
       this.player.animations.play('idle')
-
-    if (this.player.body.touching.down && this.player.y > 100) {
+    } if (this.player.body.touching.down && this.player.y > 100) {
       if (this.hasJumped) {
         this.dustSound.play()
         this.dust.x = this.player.x
@@ -142,8 +136,7 @@ export default class extends Phaser.State {
     if (!this.coins) {
       this.coins = this.add.group()
       this.coins.enableBody = true
-    }
-    else {
+    } else {
       this.coins.forEachAlive(function (e) {
         e.kill()
       }, this)
@@ -210,19 +203,34 @@ export default class extends Phaser.State {
 
     this.leftButton = this.add.sprite(10, 130, 'left')
     this.leftButton.inputEnabled = true
-    this.leftButton.events.onInputOver.add(function () {this.moveLeft = true}, this)
-    this.leftButton.events.onInputOut.add(function () {this.moveLeft = false}, this)
-    this.leftButton.events.onInputDown.add(function () {this.moveLeft = true}, this)
-    this.leftButton.events.onInputUp.add(function () {this.moveLeft = false}, this)
+    this.leftButton.events.onInputOver.add(function () {
+      this.moveLeft = true
+    }, this)
+    this.leftButton.events.onInputOut.add(function () {
+      this.moveLeft = false
+    }, this)
+    this.leftButton.events.onInputDown.add(function () {
+      this.moveLeft = true
+    }, this)
+    this.leftButton.events.onInputUp.add(function () {
+      this.moveLeft = false
+    }, this)
     this.leftButton.alpha = 0.5
 
     this.rightButton = this.add.sprite(110, 130, 'right')
     this.rightButton.inputEnabled = true
-    this.rightButton.events.onInputOver.add(function () {this.moveRight = true}, this)
-    this.rightButton.events.onInputOut.add(function () {this.moveRight = false}, this)
-    this.rightButton.events.onInputDown.add(function () {this.moveRight = true}, this)
-    this.rightButton.events.onInputUp.add(function () {this.moveRight = false}, this)
+    this.rightButton.events.onInputOver.add(function () {
+      this.moveRight = true
+    }, this)
+    this.rightButton.events.onInputOut.add(function () {
+      this.moveRight = false
+    }, this)
+    this.rightButton.events.onInputDown.add(function () {
+      this.moveRight = true
+    }, this)
+    this.rightButton.events.onInputUp.add(function () {
+      this.moveRight = false
+    }, this)
     this.rightButton.alpha = 0.5
   }
-
 }
