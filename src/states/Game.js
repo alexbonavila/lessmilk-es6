@@ -122,7 +122,7 @@ export default class extends Phaser.State {
   loadLevel (coins, enemies) {
     this.level = this.add.group()
     this.level.enableBody = true
-    this.add.sprite(90, 200 / 2 - 50, 'wall', 0, this.level)
+    this.add.sprite(90, 200 / 2 - 10, 'wall', 0, this.level)
     this.add.sprite(390, 200 / 2 - 50, 'wall', 0, this.level)
     this.add.sprite(500 / 2 - 160, 200 / 2 + 30, 'ground', 0, this.level)
     this.level.setAll('body.immovable', true)
