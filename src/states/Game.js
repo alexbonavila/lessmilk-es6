@@ -166,13 +166,13 @@ export default class extends Phaser.State {
     this.dust.makeParticles('dust')
     this.dust.setYSpeed(-100, 100)
     this.dust.setXSpeed(-100, 100)
-    this.dust.gravity = 0
+    // this.dust.gravity = 0
 
     this.exp = this.add.emitter(0, 0, 20)
     this.exp.makeParticles('exp')
     this.exp.setYSpeed(-150, 150)
     this.exp.setXSpeed(-150, 150)
-    this.exp.gravity = 0
+    // this.exp.gravity = 0
   }
 
   shakeEffect (g) {
